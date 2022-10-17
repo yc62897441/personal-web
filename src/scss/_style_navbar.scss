@@ -1,0 +1,101 @@
+.navbar {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  background-color: $main-background-darker;
+  @include flex-row-center-center;
+  justify-content: flex-start;
+}
+
+.navbar-toggle:checked~.navbar-link-container {
+  transform: scale(1, 1);
+  transition: opacity 0.2s ease-out 0.15s;
+  opacity: 1;
+}
+
+.burger-bar-wrapper img {
+  width: 35px;
+  height: 35px;
+  margin-left: 30px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.navbar-toggle {
+  /*不佔空間*/
+  position: absolute;
+  visibility: hidden;
+  display: none;
+}
+
+.navbar-link-container {
+  position: absolute;
+  top: 50px;
+  @include flex-row-center-center;
+  width: 100%;
+  height: 30px;
+  background-color: inherit;
+  transform: scale(0, 0);
+  opacity: 0;
+}
+
+.navbar-link {
+  @extend %link;
+  margin: 0 0.2rem;
+  color: $link-font;
+  @include font-scale-5;
+}
+
+/*RWD*/
+/*RWD*/
+/*RWD*/
+@media (min-width: 375px) {
+  .navbar-link-container {
+    height: 40px;
+  }
+
+  .navbar-link {
+    margin: 0 0.5rem;
+    @include font-scale-4;
+  }
+}
+
+@media (min-width: 576px) {
+  .navbar-link-container {
+    height: 50px;
+  }
+
+  .navbar-link {
+    margin: 0 0.8rem;
+    @include font-scale-3;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    height: 80px;
+  }
+
+  .burger-bar-wrapper img {
+    /*不佔空間*/
+    position: absolute;
+    visibility: hidden;
+    display: none;
+  }
+
+  .navbar-link-container {
+    position: static;
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+
+  .navbar-link {
+    margin: 0 1rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .navbar-link {
+    margin: 0 2.5rem;
+  }
+}

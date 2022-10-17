@@ -36,7 +36,7 @@ module.exports = defineConfig({
       // pass options to sass-loader
     }
   },
-  devServer: {
-    disableHostCheck: true
-  }
+  // devServer: {
+  //   disableHostCheck: true
+  // }
 })
