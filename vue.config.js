@@ -3,7 +3,11 @@ const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
   lintOnSave: false,
-  publicPath: '.',
+  // publicPath: '.',
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/personal-web/' // 改成專案名稱(repository name)
+    : '/'
+  ,
   pages: {
     index: {
       // entry for the page

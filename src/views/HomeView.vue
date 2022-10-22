@@ -3,12 +3,11 @@
     <section class="home-section home-section-about">
       <div class="section-about">
         <div class="section-about-img-wrapper">
-          <img class="about-img" src="../assets/about-avatar.jpg">
+          <img class="about-img" v-bind:src="user.title_img">
         </div>
         <div class="section-about-introduction-wrapper">
-          <p class="section-title">關於我</p>
-          <p class="section-content-text">
-            臣亮言：先帝創業未半而中道崩殂，今天下三分，益州疲弊，此誠危急存亡之秋也。然侍衞之臣不懈於內，忠志之士忘身於外者，蓋追先帝之殊遇，欲報之於陛下也。</p>
+          <p class="section-title">關於我：{{user.name}}</p>
+          <p class="section-content-text">{{user.description}}</p>
           <div class="section-more-wrapper">
             <router-link class="section-more-link" to="/about">更多資訊</router-link>
           </div>
@@ -25,35 +24,13 @@
       </div>
       <div class="section-projects">
         <div class="section-projects-wrapper">
-          <div class="section-project-wrapper">
+          <div v-for="project in projects" class="section-project-wrapper">
             <div class="section-project-img-wrapper">
-              <img class="project-img" src="../assets/project1-dancing-snowman.jpg">
+              <img class="project-img" v-bind:src="project.title_img">
             </div>
             <div class="section-project-introduction-wrapper">
-              <p class="section-project-title">專案一: Dancing Snowman</p>
-              <p class="section-project-text">臣亮言：先帝創業未半而中道崩殂，今天下三分，益州疲弊，此誠危急存亡之秋也。然侍衞之臣不懈於內，忠志之士忘身於外者，蓋追先帝之殊遇，欲報之於陛下也。
-              </p>
-            </div>
-          </div>
-          <div class="section-project-wrapper">
-            <div class="section-project-img-wrapper">
-              <img class="project-img" src="../assets/project2-simple-tweet.jpg">
-            </div>
-            <div class="section-project-introduction-wrapper">
-              <p class="section-project-title">專案二: Simple Twitter</p>
-              <p class="section-project-text">
-                臣亮言：先帝創業未半而中道崩殂，今天下三分，益州疲弊，此誠危急存亡之秋也。然侍衞之臣不懈於內，忠志之士忘身於外者，蓋追先帝之殊遇，欲報之於陛下也。
-              </p>
-            </div>
-          </div>
-          <div class="section-project-wrapper">
-            <div class="section-project-img-wrapper">
-              <img class="project-img" src="../assets/project3-weather-app.jpg">
-            </div>
-            <div class="section-project-introduction-wrapper">
-              <p class="section-project-title">專案三: Weather App</p>
-              <p class="section-project-text">
-                臣亮言：先帝創業未半而中道崩殂，今天下三分，益州疲弊，此誠危急存亡之秋也。然侍衞之臣不懈於內，忠志之士忘身於外者，蓋追先帝之殊遇，欲報之於陛下也。
+              <p class="section-project-title">專案: {{project.name}} {{project.title_img}}</p>
+              <p class="section-project-text">{{project.description}}
               </p>
             </div>
           </div>
@@ -70,34 +47,13 @@
       </div>
       <div class="section-lives">
         <div class="section-lives-wrapper">
-          <div class="section-live-wrapper">
+          <div v-for="live in lives" class="section-live-wrapper">
             <div class="section-live-img-wrapper">
-              <img class="live-img" src="../assets/live1-drama.jpg">
+              <img class="live-img" v-bind:src="live.title_img">
             </div>
             <div class="section-live-introduction-wrapper">
-              <p class="section-live-title">半澤直樹：加倍奉還</p>
-              <p class="section-live-text">臣亮言：先帝創業未半而中道崩殂，今天下三分，益州疲弊，此誠危急存亡之秋也。然侍衞之臣不懈於內，忠志之士忘身於外者，蓋追先帝之殊遇，欲報之於陛下也。
-              </p>
-            </div>
-          </div>
-          <div class="section-live-wrapper">
-            <div class="section-live-img-wrapper">
-              <img class="live-img" src="../assets/live2-snowmountain-1.jpg">
-            </div>
-            <div class="section-live-introduction-wrapper">
-              <p class="section-live-title">最美玉山圓柏林：雪山西稜</p>
-              <p class="section-live-text">臣亮言：先帝創業未半而中道崩殂，今天下三分，益州疲弊，此誠危急存亡之秋也。然侍衞之臣不懈於內，忠志之士忘身於外者，蓋追先帝之殊遇，欲報之於陛下也。
-              </p>
-            </div>
-          </div>
-          <div class="section-live-wrapper">
-            <div class="section-live-img-wrapper">
-              <img class="live-img" src="../assets/live2-snowmountain-2.jpg">
-            </div>
-            <div class="section-live-introduction-wrapper">
-              <p class="section-live-title">偷得浮生半日閒</p>
-              <p class="section-live-text">臣亮言：先帝創業未半而中道崩殂，今天下三分，益州疲弊，此誠危急存亡之秋也。然侍衞之臣不懈於內，忠志之士忘身於外者，蓋追先帝之殊遇，欲報之於陛下也。
-              </p>
+              <p class="section-live-title">{{live.name}}</p>
+              <p class="section-live-text">{{live.description}} </p>
             </div>
           </div>
         </div>
@@ -109,11 +65,62 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import indexApi from '../api/index'
 
 export default {
   name: 'HomeView',
   components: {
     HelloWorld
+  },
+  data() {
+    return {
+      user: {},
+      projects: [],
+      lives: []
+    }
+  },
+  methods: {
+    async getUser() {
+      try {
+        const UserId = 1
+        const response = await indexApi.getUser({ UserId })
+        if (response.data.status !== 'success') {
+          throw new Error()
+        }
+        this.user = { ...response.data.data }
+      } catch (error) {
+        console.warn(error)
+      }
+    },
+    async getProjects() {
+      try {
+        const UserId = 1
+        const response = await indexApi.getProjects({ UserId })
+        if (response.data.status !== 'success') {
+          throw new Error()
+        }
+        this.projects = response.data.data
+      } catch (error) {
+        console.warn(error)
+      }
+    },
+    async getLives() {
+      try {
+        const UserId = 1
+        const response = await indexApi.getLives({ UserId })
+        if (response.data.status !== 'success') {
+          throw new Error()
+        }
+        this.lives = response.data.data
+      } catch (error) {
+        console.warn(error)
+      }
+    }
+  },
+  created() {
+    this.getUser()
+    this.getProjects()
+    this.getLives()
   }
 }
 </script>
