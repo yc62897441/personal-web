@@ -29,7 +29,7 @@
               <img class="project-img" v-bind:src="project.title_img">
             </div>
             <div class="section-project-introduction-wrapper">
-              <p class="section-project-title">專案: {{project.name}} {{project.title_img}}</p>
+              <p class="section-project-title">專案: {{project.name}}</p>
               <p class="section-project-text">{{project.description}}
               </p>
             </div>
